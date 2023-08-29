@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
+import api from './services/api';
 
 function App() {
 	const [input, setInput] = useState('');
@@ -10,22 +11,8 @@ function App() {
 				alert('Preencha o CEP!');
 				return;
 			}
-			let controller = new AbortController();
-			let tp = setTimeout(() => controller.abort(), 10000);
-			const response = await fetch(
-				`https://viacep.com.br/ws/${input}/json`,
-				{
-					method: 'GET',
-					signal: controller.signal
-				}
-			);
-			if (!response.ok) {
-				throw new Error(`Erro HTTP status: ${response.status}`);
-			}
-			const json = await response.json();
-			clearTimeout(tp);
-			setEndereco(json);
-			return json;
+			const response = await api.get(`${input}/json`);
+			setEndereco(response.data);
 		} catch (error) {
 			console.log(error.message);
 		}
