@@ -25,7 +25,6 @@ function App() {
 			const json = await response.json();
 			clearTimeout(tp);
 			setEndereco(json);
-			return json;
 		} catch (error) {
 			console.log(error.message);
 		}
