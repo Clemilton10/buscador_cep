@@ -43,15 +43,17 @@ function App() {
 					<FiSearch size={25} color="#fff" />
 				</button>
 			</div>
-			<main className="main">
-				<h2>{endereco.cep}</h2>
-				<span>{endereco.logradouro}</span>
-				<span>{endereco.complemento}</span>
-				<span>{endereco.bairro}</span>
-				<span>
-					{endereco.localidade} {endereco.uf}
-				</span>
-			</main>
+			{Object.keys(endereco).length > 0 && (
+				<main className="main">
+					<h2>{endereco.cep}</h2>
+					<span>{endereco.logradouro}</span>
+					<span>{endereco.complemento}</span>
+					<span>{endereco.bairro}</span>
+					<span>
+						{endereco.localidade} {endereco.uf}
+					</span>
+				</main>
+			)}
 		</div>
 	);
 }
