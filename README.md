@@ -1,5 +1,9 @@
 # Buscador de Cep
 
+<center>
+<img src='./src/img/001.png' border=0 />
+</center>
+
 ### Instalação
 
 ```sh
